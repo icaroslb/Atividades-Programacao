@@ -132,10 +132,16 @@ void inicializar_barcos(mapa *m){
 			pos=rand()%2;
 			if(pos==HORIZONTAL){
 				x=rand()%(TAMMAPAX);
-				y=rand()%(TAMMAPAY-FRAGATA);
-			}else{
-				x=rand()%(TAMMAPAX-FRAGATA);
 				y=rand()%(TAMMAPAY);
+				if(y>(TAMMAPAY-FRAGATA)){
+					y-=FRAGATA;
+				}
+			}else{
+				x=rand()%(TAMMAPAX);
+				y=rand()%(TAMMAPAY);
+				if(x>(TAMMAPAX-FRAGATA)){
+					x-=FRAGATA;
+				}
 			}
 			m=caminhar(m, x, y);
 			if(pos_vali(m, FRAGATA, pos, humcomp)){
@@ -149,10 +155,16 @@ void inicializar_barcos(mapa *m){
 			pos=rand()%2;
 			if(pos==HORIZONTAL){
 				x=rand()%(TAMMAPAX);
-				y=rand()%(TAMMAPAY-DESTROYER);
-			}else{
-				x=rand()%(TAMMAPAX-DESTROYER);
 				y=rand()%(TAMMAPAY);
+				if(y>(TAMMAPAY-DESTROYER)){
+					y-=DESTROYER;
+				}
+			}else{
+				x=rand()%(TAMMAPAX);
+				y=rand()%(TAMMAPAY);
+				if(x>(TAMMAPAX-DESTROYER)){
+					x-=DESTROYER;
+				}
 			}
 			m=caminhar(m, x, y);
 			if(pos_vali(m, DESTROYER, pos, humcomp)){
@@ -166,10 +178,16 @@ void inicializar_barcos(mapa *m){
 			pos=rand()%2;
 			if(pos==HORIZONTAL){
 				x=rand()%(TAMMAPAX);
-				y=rand()%(TAMMAPAY-PORTA_AVIAO);
-			}else{
-				x=rand()%(TAMMAPAX-PORTA_AVIAO);
 				y=rand()%(TAMMAPAY);
+				if(y>(TAMMAPAY-PORTA_AVIAO)){
+					y-=PORTA_AVIAO;
+				}
+			}else{
+				x=rand()%(TAMMAPAX);
+				y=rand()%(TAMMAPAY);
+				if(x>(TAMMAPAX-PORTA_AVIAO)){
+					x-=PORTA_AVIAO;
+				}
 			}
 			m=caminhar(m, x, y);
 			if(pos_vali(m, PORTA_AVIAO, pos, humcomp)){

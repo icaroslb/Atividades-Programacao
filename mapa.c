@@ -64,11 +64,11 @@ mapa* caminhar(mapa *m, unsigned short int x, unsigned short int y){
 	//caminha para a coluna requerida
 	if((m->y)<y){
 		while((m->y)<y){
-			m=m->esq;
+			m=m->dir;
 		}
 	}else{
 		while((m->y)>y){
-			m=m->dir;
+			m=m->esq;
 		}
 	}
 	return m;
