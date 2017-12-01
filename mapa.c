@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "funcoes.h"
 
-//função que inicializa um nó
+//função que inicializa um nó do mapa
 void iniciNo(mapa **no, unsigned short int x, unsigned short int y){
 	*no=(mapa*)malloc(sizeof(mapa));
 	(*no)->x=x;
@@ -49,7 +49,8 @@ void inicializar_mapa(mapa **m){
 	inicializar_barcos(*m);
 }
 
-//função que passa uma posição como parâmetro e ela retorna o endereço da posição
+/*função que passa uma posição como parâmetro
+e retorna o endereço da posição*/
 mapa* caminhar(mapa *m, unsigned short int x, unsigned short int y){
 	//caminha para a linha requerida
 	if((m->x)<x){
@@ -74,7 +75,7 @@ mapa* caminhar(mapa *m, unsigned short int x, unsigned short int y){
 	return m;
 }
 
-//função que imprime na tela os mapas
+//Imprime na tela os mapas
 void mostrar_mapa(mapa *m){
 	unsigned short int x, y;
 	mapa *humano=m, *computador=m;
@@ -100,4 +101,38 @@ void mostrar_mapa(mapa *m){
 		printf("|\n");
 	}
 	printf("  +------------+\t\t  +------------+\n");
+}
+
+//Reinicia os valores do mapa
+void reiniciar_mapa(mapa *m){
+	mapa *aux=m;
+	while(aux!=NULL){
+		if(aux->dir!=m){
+			aux->valorH=' ';
+			aux->valorC=' ';
+			free(aux->barcoH);
+			free(aux->barcoC);
+			aux->barcoH=NULL;
+			aux->barcoC=NULL;
+		}else{
+			m=m->baixo;
+			aux=m;
+		}
+	}
+}
+
+//Libera o espaço do mapa
+void limpar_mapa(mapa *m){
+	mapa *aux;
+	
+	do{
+		aux=m;
+		(m->esq)->dir=NULL;
+		if(m->dir!=NULL){
+			m=m->dir;
+		}else{
+			m=m->baixo;
+		}
+		free(aux);
+	}while(m!=NULL);
 }
