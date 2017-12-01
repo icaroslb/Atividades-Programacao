@@ -79,41 +79,43 @@ mapa* caminhar(mapa *m, unsigned short int x, unsigned short int y){
 void mostrar_mapa(mapa *m){
 	unsigned short int x, y;
 	mapa *humano=m, *computador=m;
+	if(m!=NULL){
+		printf("      Humano\t\t\t    Computador\n");
+		printf("   ABCDEFGHIJKL\t\t\t   ABCDEFGHIJKL\n");
+		printf("  +------------+\t\t  +------------+\n");
 		
-	printf("      Humano\t\t\t    Computador\n");
-	printf("   ABCDEFGHIJKL\t\t\t   ABCDEFGHIJKL\n");
-	printf("  +------------+\t\t  +------------+\n");
-
-	for(x=0; x<TAMMAPAX; x++){
-		printf("%2d|", x);
-		for(y=0; y<TAMMAPAY; y++){
-			printf("%c", humano->valorH);
-			humano=humano->dir;
+		for(x=0; x<TAMMAPAX; x++){
+			printf("%2d|", x);
+			for(y=0; y<TAMMAPAY; y++){
+				printf("%c", humano->valorH);
+				humano=humano->dir;
+			}
+			humano=humano->baixo;
+			printf("|\t\t");
+			printf("%2d|", x);
+			for(y=0; y<TAMMAPAY; y++){
+				printf("%c", computador->valorC);
+				computador=computador->dir;
+			}
+			computador=computador->baixo;
+			printf("|\n");
 		}
-		humano=humano->baixo;
-		printf("|\t\t");
-		printf("%2d|", x);
-		for(y=0; y<TAMMAPAY; y++){
-			printf("%c", computador->valorC);
-			computador=computador->dir;
-		}
-		computador=computador->baixo;
-		printf("|\n");
+		printf("  +------------+\t\t  +------------+\n");
 	}
-	printf("  +------------+\t\t  +------------+\n");
 }
 
 //Reinicia os valores do mapa
 void reiniciar_mapa(mapa *m){
 	mapa *aux=m;
 	while(aux!=NULL){
+		aux->valorH=' ';
+		aux->valorC=' ';
+		free(aux->barcoH);
+		free(aux->barcoC);
+		aux->barcoH=NULL;
+		aux->barcoC=NULL;
 		if(aux->dir!=m){
-			aux->valorH=' ';
-			aux->valorC=' ';
-			free(aux->barcoH);
-			free(aux->barcoC);
-			aux->barcoH=NULL;
-			aux->barcoC=NULL;
+			aux=aux->dir;
 		}else{
 			m=m->baixo;
 			aux=m;
@@ -122,17 +124,18 @@ void reiniciar_mapa(mapa *m){
 }
 
 //Libera o espaço do mapa
-void limpar_mapa(mapa *m){
-	mapa *aux;
+void limpar_mapa(mapa **m){
+	mapa *aux, *mapa=*m;
 	
 	do{
-		aux=m;
-		(m->esq)->dir=NULL;
-		if(m->dir!=NULL){
-			m=m->dir;
+		aux=mapa;
+		(mapa->esq)->dir=NULL;
+		if(mapa->dir!=NULL){
+			mapa=mapa->dir;
 		}else{
-			m=m->baixo;
+			mapa=mapa->baixo;
 		}
 		free(aux);
-	}while(m!=NULL);
+	}while(mapa!=NULL);
+	*m=NULL;
 }
