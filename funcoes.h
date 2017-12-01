@@ -23,11 +23,27 @@ typedef struct Mapa{
 	struct Mapa *cima, *baixo, *esq, *dir;
 } mapa;
 
-void iniciNo(mapa **, unsigned short int, unsigned short int);
-void inicializar_barco(mapa *, unsigned short int,  unsigned short int, unsigned short int, unsigned short int);
-void criar_barco(mapa *, unsigned short int, unsigned short int, unsigned short int);
-unsigned short int pos_vali(mapa *, unsigned short int, unsigned short int, unsigned short int);
-void inicializar_barcos(mapa *);
-void inicializar_mapa(mapa **);
-mapa* caminhar(mapa *, unsigned short int, unsigned short int);
-void mostrar_mapa(mapa *);
+//Funções mapas
+	//função que inicializa um nó do mapa
+	void iniciNo(mapa **, unsigned short int, unsigned short int);
+	//função que iniciliza o mapa
+	void inicializar_mapa(mapa **);
+	//"Caminha" o ponteiro a posição requerida
+	mapa* caminhar(mapa *, unsigned short int, unsigned short int);
+	//Imprime na tela os mapas
+	void mostrar_mapa(mapa *);
+	//Reinicia os valores do mapa
+	void reiniciar_mapa(mapa *);
+	//Libera o espaço do mapa
+	void limpar_mapa(mapa *);
+
+//Funções barcos
+	//Inicializa os valores do barco
+	void inicializar_barco(mapa *, unsigned short int,  unsigned short int, unsigned short int, unsigned short int);
+	//Cria os barcos
+	void criar_barco(mapa *, unsigned short int, unsigned short int, unsigned short int);
+	/*Analisa se o local é válido
+	para se colocar o barco*/
+	unsigned short int pos_vali(mapa *, unsigned short int, unsigned short int, unsigned short int);
+	//Iniciliza os barcos no mapa
+	void barco_mapa(mapa *);
