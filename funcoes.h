@@ -35,7 +35,7 @@ typedef struct Mapa{
 	//Reinicia os valores do mapa
 	void reiniciar_mapa(mapa *);
 	//Libera o espaço do mapa
-	void limpar_mapa(mapa *);
+	void limpar_mapa(mapa **);
 
 //Funções barcos
 	//Inicializa os valores do barco
