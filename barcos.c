@@ -3,6 +3,7 @@
 #include <time.h>
 #include "funcoes.h"
 
+//Inicializa os valores do barco
 void inicializar_barco(mapa *m, unsigned short int tipo,  unsigned short int pos, unsigned short int valor, unsigned short int jogador){
 	if(jogador==HUMANO){
 		m->barcoH=(embar*)malloc(sizeof(embar));
@@ -84,9 +85,12 @@ void criar_barco(mapa *m, unsigned short int tipo, unsigned short int pos, unsig
 	}
 }
 
-//Analisar local válido
+/*Analisa se o local é válido
+para se colocar o barco*/
 unsigned short int pos_vali(mapa *m, unsigned short int tipo, unsigned short int pos, unsigned short int humcomp){
 	unsigned short int ind;
+	
+	//Verifica cada posição se é válida
 	for(ind=0; ind<=tipo-1; ind++){
 		if(humcomp==HUMANO && m->barcoH!=NULL){
 			return 0;
@@ -103,7 +107,7 @@ unsigned short int pos_vali(mapa *m, unsigned short int tipo, unsigned short int
 }
 
 //Iniciliza os barcos no mapa
-void inicializar_barcos(mapa *m){
+void barco_mapa(mapa *m){
 	unsigned short int x, y, pos, aux, humcomp;
 	
 	srand(time(NULL));
@@ -131,14 +135,14 @@ void inicializar_barcos(mapa *m){
 		while(aux<3){
 			pos=rand()%2;
 			if(pos==HORIZONTAL){
-				x=rand()%(TAMMAPAX);
-				y=rand()%(TAMMAPAY);
+				x=rand()%TAMMAPAX;
+				y=rand()%TAMMAPAY;
 				if(y>(TAMMAPAY-FRAGATA)){
 					y-=FRAGATA;
 				}
 			}else{
-				x=rand()%(TAMMAPAX);
-				y=rand()%(TAMMAPAY);
+				x=rand()%TAMMAPAX;
+				y=rand()%TAMMAPAY;
 				if(x>(TAMMAPAX-FRAGATA)){
 					x-=FRAGATA;
 				}
@@ -154,14 +158,14 @@ void inicializar_barcos(mapa *m){
 		while(aux<2){
 			pos=rand()%2;
 			if(pos==HORIZONTAL){
-				x=rand()%(TAMMAPAX);
-				y=rand()%(TAMMAPAY);
+				x=rand()%TAMMAPAX;
+				y=rand()%TAMMAPAY;
 				if(y>(TAMMAPAY-DESTROYER)){
 					y-=DESTROYER;
 				}
 			}else{
-				x=rand()%(TAMMAPAX);
-				y=rand()%(TAMMAPAY);
+				x=rand()%TAMMAPAX;
+				y=rand()%TAMMAPAY;
 				if(x>(TAMMAPAX-DESTROYER)){
 					x-=DESTROYER;
 				}
@@ -177,14 +181,14 @@ void inicializar_barcos(mapa *m){
 		while(aux<1){
 			pos=rand()%2;
 			if(pos==HORIZONTAL){
-				x=rand()%(TAMMAPAX);
-				y=rand()%(TAMMAPAY);
+				x=rand()%TAMMAPAX;
+				y=rand()%TAMMAPAY;
 				if(y>(TAMMAPAY-PORTA_AVIAO)){
 					y-=PORTA_AVIAO;
 				}
 			}else{
-				x=rand()%(TAMMAPAX);
-				y=rand()%(TAMMAPAY);
+				x=rand()%TAMMAPAX;
+				y=rand()%TAMMAPAY;
 				if(x>(TAMMAPAX-PORTA_AVIAO)){
 					x-=PORTA_AVIAO;
 				}
