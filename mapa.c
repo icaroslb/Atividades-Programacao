@@ -46,7 +46,7 @@ void inicializar_mapa(mapa **m){
 		ini->esq=novo;
 		cima=ini;
 	}
-	inicializar_barcos(*m);
+	barco_mapa(*m);
 }
 
 /*função que passa uma posição como parâmetro
