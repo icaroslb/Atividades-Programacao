@@ -8,7 +8,7 @@ unsigned short int decisao(mapa **m, sub *submarinos, unsigned short int computa
 	mapa *aux=*m, *ant;
 	
 	srand(time(NULL));
-	if((*m)->valorH!='*' || ((*m)->barcoH)->parte=='&'){
+	if(aux->valorH!=' ' || aux->valorH!='O' || (aux->barcoH)->parte=='&' || (aux->barcoH)->dano==0){
 		do{
 			x=rand()%TAMMAPAX;
 			y=rand()%TAMMAPAY;
