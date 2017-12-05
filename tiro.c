@@ -139,7 +139,7 @@ if(humcomp==HUMANO){
 			}
 			(*h)->valorC='>';//mudancas nas extremidades
 			aux->valorC='<';
-			return 2;//tipo de retorno q identifica acerto
+			return HUMANO;//tipo de retorno q identifica acerto
 		}
 	}
 
