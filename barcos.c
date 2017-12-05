@@ -10,11 +10,13 @@ void inicializar_barco(mapa *m, unsigned short int tipo,  unsigned short int pos
 		(m->barcoH)->parte=valor;
 		m->valorH=valor;
 		(m->barcoH)->pos=pos;
+		(m->barcoH)->dano=0;
 	}else{
 		m->barcoC=(embar*)malloc(sizeof(embar));
 		(m->barcoC)->parte=valor;
 		m->valorC=valor;
 		(m->barcoC)->pos=pos;
+		(m->barcoC)->dano=0;
 	}
 }
 
@@ -107,7 +109,7 @@ unsigned short int pos_vali(mapa *m, unsigned short int tipo, unsigned short int
 }
 
 //Iniciliza os barcos no mapa
-void barco_mapa(mapa *m){
+void barco_mapa(mapa *m, sub *submarinos){
 	unsigned short int x, y, pos, aux, humcomp;
 	
 	srand(time(NULL));
@@ -127,6 +129,19 @@ void barco_mapa(mapa *m){
 			pos=rand()%2;
 			if(pos_vali(m, SUBMARINO, pos, humcomp)){
 				criar_barco(m, SUBMARINO, pos, humcomp);
+				if(humcomp==HUMANO){
+					if(aux==0){
+						submarinos->subH1=m;
+					}else{
+						submarinos->subH2=m;
+					}
+				}else{
+					if(aux==0){
+						submarinos->subC1=m;
+					}else{
+						submarinos->subC2=m;
+					}
+				}
 				aux+=1;
 			}
 		}

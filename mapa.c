@@ -17,7 +17,7 @@ void iniciNo(mapa **no, unsigned short int x, unsigned short int y){
 }
 
 //função que iniciliza o mapa
-void inicializar_mapa(mapa **m){
+void inicializar_mapa(mapa **m, sub *submarinos){
 	mapa *ini, *novo, *aux, *cima=NULL;
 	unsigned short int x, y;
 	
@@ -46,7 +46,7 @@ void inicializar_mapa(mapa **m){
 		ini->esq=novo;
 		cima=ini;
 	}
-	barco_mapa(*m);
+	barco_mapa(*m, submarinos);
 }
 
 /*função que passa uma posição como parâmetro

@@ -14,7 +14,7 @@
 #define PORTA_AVIAO 5
 
 typedef struct Embar{
-	unsigned short int parte, tipo, pos;
+	unsigned short int parte, tipo, pos, dano;
 } embar;
 
 typedef struct Mapa{
@@ -23,12 +23,16 @@ typedef struct Mapa{
 	struct Mapa *cima, *baixo, *esq, *dir;
 } mapa;
 
+typedef struct Sub{
+	mapa *subH1, *subH2, *subC1, *subC2;
+} sub;
+
 //Funções mapas
 	//função que inicializa um nó do mapa
 	void iniciNo(mapa **, unsigned short int, unsigned short int);
 	//função que iniciliza o mapa
-	void inicializar_mapa(mapa **);
-	//"Caminha" o ponteiro a posição requerida
+	void inicializar_mapa(mapa **, subs *);
+	//"Caminha" o ponteiro a posição x e y requerida e retorna na posição certa
 	mapa* caminhar(mapa *, unsigned short int, unsigned short int);
 	//Imprime na tela os mapas
 	void mostrar_mapa(mapa *);
@@ -46,4 +50,19 @@ typedef struct Mapa{
 	para se colocar o barco*/
 	unsigned short int pos_vali(mapa *, unsigned short int, unsigned short int, unsigned short int);
 	//Iniciliza os barcos no mapa
-	void barco_mapa(mapa *);
+	void barco_mapa(mapa *, subs *);
+	
+//Funções entrada
+	//Essa função faz a verificação de uma entrada passada para ela,
+	//retorna 0 se for uma entrada inválida e 1 se for válida
+	unsigned short int entrada(char, unsigned short int **, unsigned short int **);
+	void verificar_barco(mapa *);
+	void jangada_destruida(subs *, unsigned short int);
+	unsigned short int tiro(mapa **, sub *, unsigned short int);
+	
+//Funções de jogada do computador
+	//Essa função faz as decisões do computador jogar,
+	//ela retornar COMPUTADOR se ele puder jogar novamente
+	//e HUMANO se for a vez do usuário
+	unsigned short int decisao(mapa **, subs *, unsigned short int);
+	
