@@ -140,7 +140,7 @@ unsigned short int tiro(mapa *m, sub *submarinos, unsigned short int humcomp){
 				printf("Kill exp +100\nvc destruiu aquele desnaturado\n"); 
 				return HUMANO;//tipo de retorno q identifica acerto
 			}
-			if((aux->barcoC)->tipo=='&'){
+			if((aux->barcoC)->parte=='&'){
 				jangada_destruida(submarinos, humcomp);
 				return COMPUTADOR;
 			}
