@@ -76,7 +76,7 @@ mapa* caminhar(mapa *m, unsigned short int x, unsigned short int y){
 }
 
 //Imprime na tela os mapas
-void mostrar_mapa(mapa *m){
+void mostrar_mapa(mapa *m, mapa **mcomp){
 	unsigned short int x, y;
 	mapa *humano=m, *computador=m;
 	if(m!=NULL){
@@ -87,6 +87,11 @@ void mostrar_mapa(mapa *m){
 		for(x=0; x<TAMMAPAX; x++){
 			printf("%2d|", x);
 			for(y=0; y<TAMMAPAY; y++){
+				if((*mcomp)->valorH=='*' && ((*mcomp)->barcoH)->dano==1){
+					if(humano->barcoH!=NULL && humano->valorH=='*' && (humano->barcoH)->dano==0){
+						*mcomp=humano;
+					}
+				}
 				printf("%c", humano->valorH);
 				humano=humano->dir;
 			}

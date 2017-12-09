@@ -8,17 +8,20 @@ unsigned short int decisao(mapa **m, sub *submarinos, unsigned short int computa
 	mapa *aux=*m, *ant;
 	
 	srand(time(NULL));
-	if(aux->valorH!=' ' || aux->valorH!='O' || (aux->barcoH)->parte=='&' || (aux->barcoH)->dano==0){
+	if((*m)->valorH!='*' || ((*m)->barcoH)->dano==1){
+			printf("teste %d\n", aux->x);
+			
 		do{
 			x=rand()%TAMMAPAX;
 			y=rand()%TAMMAPAY;
 			printf("%d %d\n", x, y);
 			aux=caminhar(*m, x, y);
 			printf("%d %d\n", aux->x, aux->y);
-		}while(aux->valorH=='O' && aux->valorH=='*');
+		}while(aux->valorH=='O' || aux->valorH=='*');
 		computador=tiro(aux, submarinos, computador);
-		if(aux->valorH!='&' && aux->valorH!='O'){
-			aux=*m;
+		if(aux->valorH=='*' && (aux->barcoH)->parte!='&'){
+			printf("teste\n");
+			*m=aux;
 		}
 	}else{
 		do{		

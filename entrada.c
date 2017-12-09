@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "funcoes.h"
 
-unsigned short int entrada(char b[4], unsigned short int **x, unsigned short int **y){
+unsigned short int entrada(char *b, unsigned short int **x, unsigned short int **y){
 	unsigned short int ok,let=0,num=0, i=0;
 	unsigned short int po=0;
 	unsigned short int lado=0,cima;
@@ -45,8 +45,8 @@ unsigned short int entrada(char b[4], unsigned short int **x, unsigned short int
 		printf("nao tem essa coordenada \n");
 		return 0;
 	}
-	cima=cima-1;
-	lado=lado-1;
+	cima=cima;
+	lado=lado;
 	(*x)=&lado;
 	(*y)=&(cima);
 	printf("entendido capitao \n");

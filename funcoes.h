@@ -31,11 +31,11 @@ typedef struct Sub{
 	//função que inicializa um nó do mapa
 	void iniciNo(mapa **, unsigned short int, unsigned short int);
 	//função que iniciliza o mapa
-	void inicializar_mapa(mapa **, subs *);
+	void inicializar_mapa(mapa **, sub *);
 	//"Caminha" o ponteiro a posição x e y requerida e retorna na posição certa
 	mapa* caminhar(mapa *, unsigned short int, unsigned short int);
 	//Imprime na tela os mapas
-	void mostrar_mapa(mapa *);
+	void mostrar_mapa(mapa *, mapa **);
 	//Reinicia os valores do mapa
 	void reiniciar_mapa(mapa *);
 	//Libera o espaço do mapa
@@ -50,19 +50,18 @@ typedef struct Sub{
 	para se colocar o barco*/
 	unsigned short int pos_vali(mapa *, unsigned short int, unsigned short int, unsigned short int);
 	//Iniciliza os barcos no mapa
-	void barco_mapa(mapa *, subs *);
+	void barco_mapa(mapa *, sub *);
 	
 //Funções entrada
 	//Essa função faz a verificação de uma entrada passada para ela,
 	//retorna 0 se for uma entrada inválida e 1 se for válida
-	unsigned short int entrada(char, unsigned short int **, unsigned short int **);
-	void verificar_barco(mapa *);
-	void jangada_destruida(subs *, unsigned short int);
-	unsigned short int tiro(mapa **, sub *, unsigned short int);
+	unsigned short int entrada(char *, unsigned short int **, unsigned short int **);
+	unsigned short int destruido(mapa *, unsigned short int);
+	void jangada_destruida(sub *, unsigned short int);
+	unsigned short int tiro(mapa *, sub *, unsigned short int);
 	
 //Funções de jogada do computador
 	//Essa função faz as decisões do computador jogar,
 	//ela retornar COMPUTADOR se ele puder jogar novamente
 	//e HUMANO se for a vez do usuário
-	unsigned short int decisao(mapa **, subs *, unsigned short int);
-	
+	unsigned short int decisao(mapa **, sub *, unsigned short int);
