@@ -31,14 +31,14 @@ unsigned short int leitura(unsigned short int *x, unsigned short int *y){
 	return (coordx+coordy);
 }
 
-unsigned short int entrada(unsigned short int *x, unsigned short int *y){
+void entrada(unsigned short int *x, unsigned short int *y){
 	/*unsigned short int ok,let=0,num=0, i=0;
 	unsigned short int po=0;*/
 	unsigned short int coord;
 	
 	do{
 		printf("Insira as coordenadas: ");
-		//limpar_teclado();
+		limpar_teclado();
 		coord=leitura(x, y);
 		if((*x)>12 || (*y)>12 || coord<2){
 			printf("Entrada inválida!\n");

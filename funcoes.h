@@ -57,7 +57,7 @@ typedef struct Sub{
 	//retorna 0 se for uma entrada inválida e 1 se for válida
 	void limpar_teclado();
 	unsigned short int leitura(unsigned short int *, unsigned short int *);
-	unsigned short int entrada(unsigned short int *, unsigned short int *);
+	void entrada(unsigned short int *, unsigned short int *);
 	unsigned short int destruido(mapa *, unsigned short int);
 	void jangada_destruida(sub *, unsigned short int);
 	unsigned short int tiro(mapa *, sub *, unsigned short int);

@@ -19,10 +19,10 @@ int main(){
 	}*/
 	
 	
-	unsigned short int certo, x, y;
+	unsigned short int x, y;
 	char a[4];
 	
-	certo=entrada(&x, &y);
-	printf("%d %d %d", certo, x, y);
+	entrada(&x, &y);
+	printf("%d %d", x, y);
 	return EXIT_SUCCESS;
 }
