@@ -3,18 +3,18 @@
 #include <stdlib.h>
 #include "funcoes.h"
 
-unsigned short int entrada(char *b, unsigned short int **x, unsigned short int **y){
+unsigned short int entrada(char *b, unsigned short int *x, unsigned short int *y){
 	unsigned short int ok,let=0,num=0, i=0;
 	unsigned short int po=0;
 	unsigned short int lado=0,cima;
 	
 	while(b[i]!='\0'){
 		ok=b[i];
-		if(ok<48 || (ok>57 && ok<65) || (ok>77 && ok<97) || ok>109){ //trechos nao permitidos da tabela ascii//
+		if((ok<'0' || (ok>'9' && ok<'A') || (ok>'L' && ok<'a') || ok>'l') && (ok!=' ')){ //trechos nao permitidos da tabela ascii//
 			printf("entranda invalida \n");
 			return 0;
 		}
-		if(ok>=48 && ok<=57){
+		if(ok>='0' && ok<='9'){
 			num++;
 		}
 		i++;
@@ -22,15 +22,15 @@ unsigned short int entrada(char *b, unsigned short int **x, unsigned short int *
 	i=0;
 	while(b[i]!='\0'){
 		ok=b[i];
-		if(ok>=48 && ok<=57){
+		if(ok>='0' && ok<='9'){
 			lado=ok-48;//conversao para int//
 			num=num-1;
 		}
-		if(ok>=65 && ok<=77){
+		if(ok>='A' && ok<='L'){
 			cima=(ok-64);
 			let++;
 		}
-		if(ok>=97 && ok<=109){
+		if(ok>='a' && ok<='l'){
 			cima=(ok-96);
 			let++;
 		}
@@ -47,8 +47,8 @@ unsigned short int entrada(char *b, unsigned short int **x, unsigned short int *
 	}
 	cima=cima;
 	lado=lado;
-	(*x)=&lado;
-	(*y)=&(cima);
+	(*x)=lado;
+	(*y)=(cima);
 	printf("entendido capitao \n");
 	return 1;
 }
