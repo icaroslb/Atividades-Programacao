@@ -14,7 +14,7 @@
 #define PORTA_AVIAO 5
 
 typedef struct Embar{
-	unsigned short int parte, tipo, pos, dano;
+	unsigned short int parte, pos, dano;
 } embar;
 
 typedef struct Mapa{
