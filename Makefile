@@ -7,7 +7,7 @@ barcos.o: barcos.c funcoes.h
 	gcc -g -c barcos.c
 tiro.o: tiro.c funcoes.h
 	gcc -g -c tiro.c
-entrada.o: entrada.o funcoes.h
+entrada.o: entrada.c funcoes.h
 	gcc -g -c entrada.c
 computador.o: computador.c funcoes.h
 	gcc -g -c computador.c

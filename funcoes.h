@@ -14,7 +14,7 @@
 #define PORTA_AVIAO 5
 
 typedef struct Embar{
-	unsigned short int parte, pos, dano;
+	unsigned short int parte, tipo, pos, dano;
 } embar;
 
 typedef struct Mapa{
@@ -55,7 +55,9 @@ typedef struct Sub{
 //Funções entrada
 	//Essa função faz a verificação de uma entrada passada para ela,
 	//retorna 0 se for uma entrada inválida e 1 se for válida
-	unsigned short int entrada(char *, unsigned short int **, unsigned short int **);
+	void limpar_teclado();
+	unsigned short int leitura(unsigned short int *, unsigned short int *);
+	unsigned short int entrada(unsigned short int *, unsigned short int *);
 	unsigned short int destruido(mapa *, unsigned short int);
 	void jangada_destruida(sub *, unsigned short int);
 	unsigned short int tiro(mapa *, sub *, unsigned short int);

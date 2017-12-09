@@ -3,12 +3,51 @@
 #include <stdlib.h>
 #include "funcoes.h"
 
-unsigned short int entrada(char *b, unsigned short int *x, unsigned short int *y){
-	unsigned short int ok,let=0,num=0, i=0;
-	unsigned short int po=0;
-	unsigned short int lado=0,cima;
+void limpar_teclado(){
+	int tc;
+	tc=getchar();
+	while(tc!='\n' && tc!=EOF){tc=getchar();}
+}
+
+unsigned short int leitura(unsigned short int *x, unsigned short int *y){
+	unsigned short int ent, coordx=0, coordy=0;
 	
-	while(b[i]!='\0'){
+	*x=0;
+	*y=0;
+	ent=getchar();
+	while(ent!='\0' && ent!='\n' && ent!=EOF){
+		if(ent>='0' && ent<'9'){
+			*x=((*x)*10)+(ent-'0');
+			coordx+=1;
+		}else if(ent>='A' && ent<='L'){
+			*y=((*y)*10)+(ent-'A');
+			coordy+=1;
+		}else if(ent>='a' && ent<='l'){
+			*y=((*y)*10)+(ent-'a');
+			coordy+=1;
+		}
+		ent=getchar();
+	}
+	return (coordx+coordy);
+}
+
+unsigned short int entrada(unsigned short int *x, unsigned short int *y){
+	/*unsigned short int ok,let=0,num=0, i=0;
+	unsigned short int po=0;*/
+	unsigned short int coord;
+	
+	do{
+		printf("Insira as coordenadas: ");
+		//limpar_teclado();
+		coord=leitura(x, y);
+		if((*x)>12 || (*y)>12 || coord<2){
+			printf("Entrada inválida!\n");
+		}else{
+			printf("Entendido capitão!\n");
+		}
+	}while(((*x)>12 && (*x)<0) || ((*y)>12 && (*y)<0));
+	
+	/*while(b[i]!='\0'){
 		ok=b[i];
 		if((ok<'0' || (ok>'9' && ok<'A') || (ok>'L' && ok<'a') || ok>'l') && (ok!=' ')){ //trechos nao permitidos da tabela ascii//
 			printf("entranda invalida \n");
@@ -48,7 +87,5 @@ unsigned short int entrada(char *b, unsigned short int *x, unsigned short int *y
 	cima=cima;
 	lado=lado;
 	(*x)=lado;
-	(*y)=(cima);
-	printf("entendido capitao \n");
-	return 1;
+	(*y)=(cima);*/
 }
