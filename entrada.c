@@ -23,15 +23,15 @@ unsigned short int entrada(char *b, unsigned short int *x, unsigned short int *y
 	while(b[i]!='\0'){
 		ok=b[i];
 		if(ok>='0' && ok<='9'){
-			lado=ok-48;//conversao para int//
+			lado=ok-'0';//conversao para int//
 			num=num-1;
 		}
 		if(ok>='A' && ok<='L'){
-			cima=(ok-64);
+			cima=(ok-'A');
 			let++;
 		}
 		if(ok>='a' && ok<='l'){
-			cima=(ok-96);
+			cima=(ok-'a');
 			let++;
 		}
 		i++;
